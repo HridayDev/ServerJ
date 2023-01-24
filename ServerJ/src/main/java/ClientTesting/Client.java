@@ -14,8 +14,8 @@ public class Client {
 		System.out.println("Connected.");
 		con.setRequestMethod("GET");
 		con.setDoOutput(true);
-		con.connect();
-
+		con.connect(); 
+// DONT OFHERRUIFEBLJVNFUILBGUGIRUBLHF BFV
 		String str = "Hello from the client!\r\n";
 		OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
 		out.write(str);
