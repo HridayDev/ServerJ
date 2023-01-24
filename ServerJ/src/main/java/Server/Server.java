@@ -12,35 +12,20 @@ public class Server {
 
 		while(true) {
 			
-			System.out.println("Connecting to client..");
-			ServerSocket ss = new ServerSocket(8080);
-			Socket con = ss.accept();
-			System.out.println("Connected");
+			ServerSocket serverSocket = new ServerSocket(8080); 
+			Socket clientSocket = serverSocket.accept(); 
+			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true); 
 
-			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			System.out.println("Received from client:");
-//			String s;
-//			while ((s = in.readLine())!= null) {
-//				System.out.println(s);
-//				s = null;
-//			}
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			System.out.println(in.readLine());
-			
-			PrintWriter out = new PrintWriter(con.getOutputStream(), true);
-			out.println("Hello from the server!\t\n\r");
-			out.close();
+			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); 
 
-			System.out.println("Done\n\n\n\n");
-			ss.close();
+			out.println("Hi, Hello\r\n");
+
+			System.out.println(in.readLine());
+
+			out.close(); 
+			in.close(); 
+			clientSocket.close(); 
+			serverSocket.close(); 
 			
 		}
 

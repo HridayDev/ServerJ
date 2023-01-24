@@ -16,28 +16,18 @@ public class Client {
 		con.setDoOutput(true);
 		con.connect();
 
-		String str = "Hello from the client!\t\n\r";
+		String str = "Hello from the client!\r\n";
 		OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
 		out.write(str);
 		out.flush();
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		System.out.println("Received from server:" + in.readLine());
-//		String s;
-//		while ((s = in.readLine())!= null) {
-//			System.out.println(s);
-//			s = null;
-//		}
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
-		System.out.println(in.readLine());
+		String s;
+		while ((s = in.readLine()) != null) {
+			System.out.println(s);
+			s = null;
+		}
 		in.close();
 	}
 
